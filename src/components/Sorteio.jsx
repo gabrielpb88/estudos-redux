@@ -1,7 +1,8 @@
 import './Intervalo.css'
 import Card from './Card'
+import { connect } from 'react-redux'
 
-export default props => {
+function Sorteio (props) {
   const { min, max } = props
   const sorteio = Math.round(Math.random() * (max - min) + min) 
 
@@ -16,3 +17,12 @@ export default props => {
     </Card>
   )
 }
+
+const mapStateToProps = (globalState) => {
+  return {
+    min: globalState.numeros.min,
+    max: globalState.numeros.max,
+  }
+}
+
+export default connect(mapStateToProps)(Sorteio)

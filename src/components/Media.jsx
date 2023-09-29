@@ -1,7 +1,8 @@
 import './Intervalo.css'
 import Card from './Card'
+import { connect } from 'react-redux'
 
-export default props => {
+function Media (props) {
   const { min, max } = props
   const media = (min + max)/2
   return (
@@ -15,3 +16,12 @@ export default props => {
     </Card>
   )
 }
+
+const mapStateToProps = (globalState) => {
+  return {
+    min: globalState.numeros.min,
+    max: globalState.numeros.max
+  }
+}
+
+export default connect(mapStateToProps)(Media)

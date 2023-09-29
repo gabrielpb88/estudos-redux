@@ -1,7 +1,8 @@
 import './Intervalo.css'
 import Card from './Card'
+import { connect } from 'react-redux'
 
-export default props => {
+const Soma = (props) => {
   const { min, max } = props
   const soma = min + max
   return (
@@ -15,3 +16,12 @@ export default props => {
     </Card>
   )
 }
+
+const mapStateToProps = (globalState) => {
+  return {
+    min: globalState.numeros.min,
+    max: globalState.numeros.max,
+  }
+}
+
+export default connect(mapStateToProps)(Soma)
